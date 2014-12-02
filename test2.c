@@ -6,58 +6,39 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/02 09:57:50 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/02 13:53:48 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/02 14:23:04 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "stdio.h"
 
-void	read_list(argument *test1)
-{
-	while(test1)
-	{
-		ft_putendl(test1->name);
-		test1 = test1->next;
-	}
-}
-
-
-argument *addone(argument *test1, char *argv)
-{
-	argument *test;
-	argument *tmp;
-//read_list(test1);
-	tmp = test1;
-	if ((test = (argument*)malloc(sizeof(argument))) == NULL)
-		exit(EXIT_FAILURE);
-	test->previous = tmp;
-	test->name = (char*)malloc((ft_strlen(argv)+1) * sizeof(char));
-	//test->name = argv;
-	ft_memmove(test->name, argv, (ft_strlen(argv) + 1));
-	test->next = NULL;
-	if (test1 == NULL)
-		return (test);
-	else
-		while (tmp->next != NULL)
-		{
-			tmp = tmp->next;
-		}
-	tmp->next = test;
-		
-	return(test1);
-
-}
-
+// prend les argument passer en parametre puis les met dans une list t1
 void	take_argument(int argc, char const *argv[])
+{
+	argument *t1;
+	int x;
+
+	x = 0;
+	t1 = NULL;
+	t1 = initiaze_list(t1);
+	while(x != argc)
+	{
+		t1 = addone2(t1, argv[x]);
+		x++;
+	}
+	//read_list(t1);
+}
+// lit l interieur des argument (pour l instant dossier uniquement)
+void	take_inside(int argc, char const *argv[])
 {
 	argument *test1;
 	DIR *ret;
 	struct dirent *ret2;
 	int x;
 
-	test1 = (argument*)malloc(sizeof(argument));
 	test1 = NULL;
+	test1 = initiaze_list(test1);
 	x = 1;
 	(void)argv;
 
@@ -75,7 +56,7 @@ void	take_argument(int argc, char const *argv[])
 		{
 			if ((ret = opendir(argv[x])) == NULL)
 			{
-				ft_putstr_fd("ft_ls", 2);
+				ft_putstr_fd("ft_ls: ", 2);
 				perror(argv[x]);
 			}
 			else
@@ -96,6 +77,7 @@ void	take_argument(int argc, char const *argv[])
 
 int main(int argc, char const *argv[])
 {
+	take_inside(argc, argv);
 	take_argument(argc, argv);
 	return 0;
 }

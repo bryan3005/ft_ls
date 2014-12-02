@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 08:41:12 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/02 13:48:42 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/02 14:21:06 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,13 @@ typedef struct argument
 	struct argument *next;
 	struct argument *previous;
 }				argument;
+
+
+void	take_argument(int argc, char const *argv[]);
+void	take_inside(int argc, char const *argv[]);
+void	read_list(argument *test1);
+argument *addone(argument *test1, char *argv);
+argument *addone2(argument *test1, char const *argv);
+argument	*initiaze_list(argument *list);
 
 #endif
