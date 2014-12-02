@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/02 14:18:05 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/02 14:20:00 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/02 14:42:14 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ argument *addone2(argument *test1, char const *argv)
 
 argument	*initiaze_list(argument *list)
 {
-	list = (argument*)malloc(sizeof(argument));
+	if((list = (argument*)malloc(sizeof(argument))) == NULL)
+		exit(EXIT_FAILURE);
 	list = NULL;
 	return (list);
 }
