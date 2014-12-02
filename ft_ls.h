@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 08:41:12 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/01 09:28:40 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/02 13:48:42 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,12 @@ typedef struct  option
 	int	option_R;
 	int option_t;
 }option;
+
+typedef struct argument
+{
+	char *name;
+	struct argument *next;
+	struct argument *previous;
+}				argument;
+
 #endif
