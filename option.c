@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/02 13:51:30 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/02 16:17:08 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/05 10:41:06 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ extern int option_r;
 extern int option_r_caps;
 extern int option_t;
 
-int 	check_valide(char s)
+void 	check_valide(char s)
 {
 	if (s == 'a')
 		option_a = 1;
@@ -40,26 +40,20 @@ int 	check_valide(char s)
 	}
 }
 
-int		check_option(argument *list)
+int		check_option(char **argv)
 {
-	//argument	*option;
 	int			i;
 	int			j;
 
-	i = 0;
-	//option = NULL;
-	//option = initiaze_list(option);
-	//list = list->next;
-	while (list->name[0] == '-')
+	i = 1;
+	while (argv[i] && argv[i][0] == '-')
 	{
 		j = 1;
-		while (list->name[j])
-		{
-			check_valide(list->name[j]);
-			//option = addone(option, list->name);
+		while (argv[i][j])
+		{ 
+			check_valide(argv[i][j]);
 			j++;
 		}
-		list = list->next;
 		i++;
 	}
 	return (i);
