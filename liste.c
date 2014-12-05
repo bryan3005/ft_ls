@@ -6,21 +6,27 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/02 14:18:05 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/05 10:41:07 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/05 14:30:10 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 //lit les liste
+extern int option_a;
+extern int option_l;
+extern int option_r;
+extern int option_r_caps;
+extern int option_t;
 
 void	read_list(t_argument *test1)
 {
-	while(test1)
-	{
-		ft_putendl(test1->name);
-		test1 = test1->next;
-	}
+		while (test1)
+		{
+			if (option_a == 1 || test1->name[0] != '.')
+				ft_putendl(test1->name);
+			test1 = test1->next;
+		}
 }
 
 //met dans les liste les char * recus 
@@ -45,8 +51,7 @@ t_argument *addone(t_argument *test1, char *argv)
 		{
 			tmp = tmp->next;
 		}
-	tmp->next = test;
-		
+	tmp->next = test;		
 	return(test1);
 }
 
