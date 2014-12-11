@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 10:05:55 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/05 10:46:43 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/11 14:03:43 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,11 @@ int main(int argc, char **argv)
 {
 	t_argument *t1;
 	int nb_opt;
+	//t_argument *t2;
 
 	nb_opt = check_option(argv);
 	t1 = take_argument(argv, nb_opt);
+	//t2 = take_argument(argv, nb_opt);
 	if (argc == nb_opt)
 		take_inside(".");
 	else if (argc > nb_opt)
@@ -78,5 +80,10 @@ int main(int argc, char **argv)
 			t1 = t1->next;
 		}
 	}
+	//while (t2)
+	//{
+	//	a_option_l(t2->name);
+	//	t2 = t2->next;
+	//}
 	return (0);
 }

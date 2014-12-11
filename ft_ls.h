@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 08:41:12 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/05 10:41:02 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/11 13:59:53 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ t_argument 				*addone(t_argument *test1, char *argv);
 t_argument 				*addone2(t_argument *test1, char *argv);
 t_argument				*initiaze_list(t_argument *list);
 int						check_option(char **argv);
+void					a_option_l(char *t2);
 
 #endif

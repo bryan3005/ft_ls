@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/02 14:18:05 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/05 14:30:10 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/11 14:26:41 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	read_list(t_argument *test1)
 		while (test1)
 		{
 			if (option_a == 1 || test1->name[0] != '.')
-				ft_putendl(test1->name);
+				{
+					if (option_l == 1)
+						a_option_l(test1->name);
+					ft_putendl(test1->name);
+				}
 			test1 = test1->next;
 		}
 }

@@ -63,10 +63,9 @@ char	**mallop(char const *s, char c)
 	t = 0;
 	i = 0;
 	t = ft_strslenmot(s, c);
-	cpy = malloc((t + 1) * sizeof(char *));
+	cpy = malloc(t  * sizeof(char *));
 	if (cpy == NULL)
 		return (NULL);
-	cpy[t] = '\0';
 	while (t > 0)
 	{
 		cpy[i] = malloc((ft_letterbyword(s, i, c) + 1) * sizeof(char));
