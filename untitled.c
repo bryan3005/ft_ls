@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/05 10:05:55 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/11 14:03:43 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/15 10:13:53 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,33 +57,52 @@ void	take_inside(char *dir_name)
 		return ;
 	}
 	while((ret2 = readdir(ret)) != NULL)
-		test1 = addone(test1, ret2->d_name);
+	{
+		test1 = addone2(test1, ret2->d_name, dir_name);
+	}
 	read_list(test1);
 }
 
+void	check_file(char *file_name)
+{
+	struct stat 	*ptr;
+	ptr = (struct stat*)malloc(sizeof(struct stat));
+
+	if (option_l == 1)
+	{
+		a_option_l(file_name);
+		ft_putstr(file_name);
+		ft_putchar('\n');
+	}
+	else
+	{
+		ft_putstr(file_name);
+		ft_putchar('\n');
+	}
+
+}
 int main(int argc, char **argv)
 {
+	struct stat 	*ptr;
 	t_argument *t1;
 	int nb_opt;
-	//t_argument *t2;
 
+	ptr = (struct stat*)malloc(sizeof(struct stat));
 	nb_opt = check_option(argv);
 	t1 = take_argument(argv, nb_opt);
-	//t2 = take_argument(argv, nb_opt);
 	if (argc == nb_opt)
 		take_inside(".");
 	else if (argc > nb_opt)
 	{
 		while (t1)
 		{
-			take_inside(t1->name);
+			lstat(t1->name,ptr);
+			if (S_ISREG(ptr->st_mode) != 0)
+					check_file(t1->name);
+			else if ((S_ISDIR(ptr->st_mode) != 0))	
+				take_inside(t1->name);
 			t1 = t1->next;
 		}
 	}
-	//while (t2)
-	//{
-	//	a_option_l(t2->name);
-	//	t2 = t2->next;
-	//}
 	return (0);
 }

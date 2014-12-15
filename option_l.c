@@ -6,7 +6,7 @@
 /*   By: mbryan <mbryan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 13:50:05 by mbryan            #+#    #+#             */
-/*   Updated: 2014/12/11 14:27:10 by mbryan           ###   ########.fr       */
+/*   Updated: 2014/12/15 11:08:14 by mbryan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ void	rigthgrp(int test, mode_t mode, char right)
 	else
 		ft_putchar('-');
 }
+/*
+int		check_size_link(int	nb_link)
+{
+	char 	*nb_link_c;
+	int 	i;
+
+	i = 0;
+	nb_link_c = ft_itoa(nb_link);
+	i = ft_strlen(nb_link_c);
+	printf("try:%d", i );
+	return (i);
+}*/
+
+
 
 void	a_option_l(char *t2)
 {
@@ -54,6 +68,7 @@ void	a_option_l(char *t2)
 	rigthgrp(S_IROTH, ptr->st_mode, 'r');
 	rigthgrp(S_IWOTH, ptr->st_mode, 'w');
 	rigthgrp(S_IXOTH, ptr->st_mode, 'x');
+//	check_size_link(ptr->st_nlink);
 	ft_putstr("  ");
 	ft_putnbr(ptr->st_nlink);
 	ft_putstr(" ");
